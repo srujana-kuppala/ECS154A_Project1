@@ -1,79 +1,137 @@
 # Project 1 README
 
-Student: Full Name (123456789)
+Student: Srujana Kuppala (921005375)
 
 ## Project Status
-This the current status of the project ...
+This the current status of the project:
+Number 1 works, Number 2- I am unsure about, Number 3- not done
 
 ## Known Issues
-The project fails to function properly in ...
+The project fails to function properly in number 2. some of the input do not match up to the Gray code and i've tried redoing the circuit and was still unable to fix it. 
 
 ## References
 * [Build an XOR gate from AND/NOT](https://electronics.stackexchange.com/questions/487529/build-an-xor-gate-from-and-not)
 * [Some other link](https://stackoverflow.com)
 
 ## Generative AI Use
-I used ChatGPT for Prompt 1, and ZZZZZ for Prompt 2....
 
-### Prompt 1
-How do you create an XOR from only and/or/not gates?
+I used ChatGPT for setting up my Github, I have not used it in a while. 
 
-### Response 1
-To create an XOR (exclusive OR) gate using only AND, OR, and NOT gates, you can follow these steps. The XOR gate outputs true only when the inputs are different.
+Prompt 1: How do i connect my repo to my local
 
-The truth table for XOR is:
+Answer 1: Go into your project folder:
 
-| A | B | A XOR B |
-|---|---|---------|
-| 0 | 0 |    0    |
-| 0 | 1 |    1    |
-| 1 | 0 |    1    |
-| 1 | 1 |    0    |
+cd path/to/project
 
-The Boolean expression for XOR can be derived as:\
-A &oplus; B = (A &and; &not; B) &or; (&not; A &and; B)
 
-This can be broken down into the following steps:
+Initialize Git (if not already):
 
-1. Create \(&not; A\) and \(&not; B\) using NOT gates.
-1. Create \(A &and; &not; B\) and \(&not; A &and; B\) using AND gates.
-1. Combine the results of the two AND gates using an OR gate.
+git init
 
-Here is the step-by-step logic construction:
 
-1. **NOT gates** to get \(&not; A\) and \(&not; B\):\
-   NOT(A) &rarr; &not; A\
-   NOT(B) &rarr; &not; B
+Connect to GitHub repo:
 
-1. **AND gates** to get \(A &and; &not; B\) and \(&not; A &and; B\):\
-   A &and; &not; B &rarr; AND(A, &not; B)\
-   &not; A &and; B &rarr; AND(&not; A, B)
+git remote add origin https://github.com/<username>/<repo-name>.git
 
-1. **OR gate** to get the final result:\
-   (A &and; &not; B) &or; (&not; A &and; B) &rarr; OR(AND(A, &not; B), AND(&not; A, B))
 
-Putting it all together in a circuit diagram:
+Add + commit files:
 
-1. Input \(A\) goes to a NOT gate to produce \(&not; A\).
-1. Input \(B\) goes to a NOT gate to produce \(&not; B\).
-1. Input \(A\) and the output of the NOT gate for \(B\) go to an AND gate to produce \(A &and; &not; B\).
-1. Input \(B\) and the output of the NOT gate for \(A\) go to an AND gate to produce \(&not; A &and; B\).
-1. The outputs of the two AND gates go to an OR gate to produce the final output \(A &oplus; B\).
+git add .
+git commit -m "Initial commit"
 
-In terms of Boolean logic:\
-XOR(A, B) = \(A &and; &not; B\) &or; \(&not; A &and; B\) 
 
-This way, you have constructed an XOR gate using only AND, OR, and NOT gates.
+Push to GitHub:
 
-### Changes 1
-I needed XNOR, so changed it to:\
-&not;\(\(A &and; &not; B\) &or; \(&not; A &and; B\)\)
+git push -u origin main
 
-### Prompt 2
-My other prompt...
 
-### Response 2
-The other response...
+That’s it ✅
 
-### Changes 2
-The other changes made...
+Changes made 1: I followed the directions and connected my computer to my github. 
+
+For Question 1:
+Prompt 2: When to use XNOR and XOR
+Answer 2: 1. XOR (Exclusive OR)
+
+Symbol: ⊕
+
+Truth: 1 if exactly one input is 1, 0 otherwise.
+
+Use when: You want to detect differences between two signals.
+
+Examples:
+
+Equality check: If you want to know if two bits are different, use XOR:
+
+A B | A⊕B
+0 0 | 0
+0 1 | 1  <-- different
+1 0 | 1  <-- different
+1 1 | 0
+
+
+Parity generator/checker: XOR all bits to see if the number of 1s is odd.
+
+Simple addition (half-adder): The sum bit of a half-adder is A⊕B.
+
+Mnemonic: XOR = “different → 1, same → 0”
+
+2. XNOR (Exclusive NOR)
+
+Symbol: ⊙ or sometimes written as ¬(A⊕B)
+
+Truth: 1 if inputs are the same, 0 if different.
+
+Use when: You want to detect equality between two signals.
+
+Examples:
+
+Equality check: XNOR outputs 1 when A and B are equal.
+
+A B | A⊙B
+0 0 | 1
+0 1 | 0
+1 0 | 0
+1 1 | 1
+
+
+Comparator circuits: Check if two binary numbers are equal.
+
+Parity check (even parity): You can use XNORs in certain parity circuits.
+
+Mnemonic: XNOR = “same → 1, different → 0”
+
+Changes Made 2: I used my boolean experessions to simplify them into XOR or XNOR gates
+
+For Problem 2:
+
+Prompt 3: can you branch multiple inputs in logism 
+
+Answer 3: Yes! In Logisim, you can branch multiple inputs, but there are some important details to keep in mind:
+
+1. Using Wires to Branch
+
+Direct branching: You can click on a wire and drag it in multiple directions to connect it to several inputs. Logisim allows a single wire to split into multiple destinations.
+
+Note: The wire itself doesn’t “duplicate” the signal; all connected inputs will see the same signal value.
+
+2. Using Splitters (for buses)
+
+If you have a multi-bit wire (bus), you can’t just branch it like a single wire. You need to use a Splitter component.
+
+A splitter lets you break a bus into individual bits or combine bits into a bus.
+
+You can then connect each bit to different inputs as needed.
+
+3. Avoiding Loops
+
+Make sure you don’t create loops (where a wire goes back into itself). Logisim will throw a warning or behave unexpectedly.
+
+4. Practical Tip
+
+If you need to branch to many inputs, it’s often cleaner to use a wire label.
+
+Label one wire (e.g., A) and connect other inputs by drawing a wire with the same label. Logisim treats all same-labeled wires as connected.
+
+Changes made: I understood that I can connect the input pins to multiple gates to build the right boolean equation. 
+
